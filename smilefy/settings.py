@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*++lbr&_ro#qa1*+storfjbt#_ij=%yp*mbo^n(@ja#cy7q6s#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'smily',
     'rest_framework',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -117,14 +118,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
+# STATIC_URL = '/static/'
+# MEDIA_URL = '/media/'
 if DEBUG:
     STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
     STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-MEDIA_ROOT =  os.path.join(BASE_DIR, 'smily\images')
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'smily/images')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -132,3 +133,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'images/final.jpg')
+
+AWS_ACCESS_KEY="xyz"
+AWS_SECRET_KEY="xyz"
+AWS_BUCKET_NAME="xyz"
+AWS_BUCKET_URL="xyz"
+AWS_REGION="us-east-1"
+AWS_S3_CUSTOM_DOMAIN="xyz"
+DEFAULT_FILE_STORAGE = 'xyz'
+STATICFILES_STORAGE = 'se'
+
+AWS_S3_URL_PROTOCOL = 'https'
+AWS_S3_USE_SSL = True
+AWS_S3_VERIFY = True
+# Media settings
+MEDIA_URL = f'https://fetch-delivery.s3.amazonaws.com/'
+
+# Static files settings (if you are storing static files on S3 too)
+STATIC_URL = f'https://fetch-delivery.s3.amazonaws.com/static/'
